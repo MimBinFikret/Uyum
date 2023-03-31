@@ -12,17 +12,6 @@ class uyum_sorgula():
         self.kuuy2k_d = uyum_sorgula.kuuy2k(str_kelime)
 
         print("incelenen kelime                                              =  "+str_kelime   + "\n")
-        
-        print("ünlü uyumu sorgulanabilir mi                                  =  "+self.u_i_s_d + "\n")
-        
-        print("büyük ünlü uyumuna uygun mu                                   =  "+self.buuk_d)
-        print("büyük ünlü uyumuna (kalınlık itibariyele) uygun mu            =  "+self.buukk_d)
-        print("büyük ünlü uyumuna (incelik  itibariyele) uygun mu            =  "+self.buuik_d + "\n")
-
-        print("küçük ünlü uyumuna (düzlük itibariyle) uygun mu               =  "+self.kuudk_d)
-        print("küçük ünlü uyumuna (yuvarlaklık no:1 itibariyle) uygun mu     =  "+self.kuuy1k_d)
-        print("küçük ünlü uyumuna (yuvarlaklık no:2 itibariyle) uygun mu     =  "+self.kuuy2k_d)
-        
 
     def u_i_s(kelimeu):
         # uyum incelenim sorgula
