@@ -1,33 +1,32 @@
-class uyum_sorgula():
-    def __init__(self, str_kelime):
-        self.u_i_s_d= uyum_sorgula.u_i_s(str_kelime) #bu "_d" kısaltması ...değeri manasına geliyor.
+class UnluUyumuSorgula():
+    def __init__(self, kelime):
+        self.UIUnluUyumuSorgulanabilirMi = self.UyumIncelenimiSorgula(kelime)
 		
-        self.buuk_d   = uyum_sorgula.buuk(str_kelime)
-        self.buukk_d  = uyum_sorgula.buukk(str_kelime)
-        self.buuik_d  = uyum_sorgula.buuik(str_kelime)
-		
-        #self.kuuk_d= kuuk(kelime) "yani küçük ünlü uyumu kontrolu: ama böyle bir fonksiyon yaratmadık."
-        self.kuudk_d  = uyum_sorgula.kuudk(str_kelime)
-        self.kuuy1k_d = uyum_sorgula.kuuy1k(str_kelime)
-        self.kuuy2k_d = uyum_sorgula.kuuy2k(str_kelime)
+        self.UIBuyukUnluUyumuKontrolu = self.BuyukUnluUyumuKontrolu(kelime)
+        self.UIBuyukUnluUyumuKalinlikItibariyleKontrolu = self.BuyukUnluUyumuKalinlikItibariyleKontrolu(kelime)
+        self.UIBuyukUnluUyumuIncelikItibariyleKontrolu = self.BuyukUnluUyumuIncelikItibariyleKontrolu(kelime)
 
-        print("incelenen kelime                                              =  "+str_kelime   + "\n")
-        
-        print("ünlü uyumu sorgulanabilir mi                                  =  "+self.u_i_s_d + "\n")
-        
-        print("büyük ünlü uyumuna uygun mu                                   =  "+self.buuk_d)
-        print("büyük ünlü uyumuna (kalınlık itibariyele) uygun mu            =  "+self.buukk_d)
-        print("büyük ünlü uyumuna (incelik  itibariyele) uygun mu            =  "+self.buuik_d + "\n")
+        #self.UIKucukUnluUyumuKontrolu oluştursak iyiydi, iç simetri olurdu ama böyle bir fonksiyon yaratmadık."
+        self.UIKucukUnluUyumuDuzlukItibariyleKontrolu = self.KucukUnluUyumuDuzlukItibariyleKontrolu(kelime)
+        self.UIKucukUnluUyumuYuvarlaklikItibariyleKontrolu1= self.KucukUnluUyumuYuvarlaklikItibariyleKontrolu1(kelime)
+        self.UIKucukUnluUyumuYuvarlaklikItibariyleKontrolu2 = self.KucukUnluUyumuYuvarlaklikItibariyleKontrolu2(kelime)
 
-        print("küçük ünlü uyumuna (düzlük itibariyle) uygun mu               =  "+self.kuudk_d)
-        print("küçük ünlü uyumuna (yuvarlaklık no:1 itibariyle) uygun mu     =  "+self.kuuy1k_d)
-        print("küçük ünlü uyumuna (yuvarlaklık no:2 itibariyle) uygun mu     =  "+self.kuuy2k_d)
+        print(f"incelenen kelime = {kelime}")
+        print(f"ünlü uyumu sorgulanabilir mi = {self.UIUnluUyumuSorgulanabilirMi}\n")
         
-    def u_i_s(kelimeu):
+        print(f"büyük ünlü uyumuna uygun mu = {self.UIBuyukUnluUyumuKontrolu}")
+        print(f"büyük ünlü uyumuna (kalınlık itibariyele) uygun mu = {self.UIBuyukUnluUyumuKalinlikItibariyleKontrolu}")
+        print(f"büyük ünlü uyumuna (incelik itibariyele) uygun mu = {self.UIBuyukUnluUyumuIncelikItibariyleKontrolu}\n")
+
+        print(f"küçük ünlü uyumuna (düzlük itibariyle) uygun mu = {self.UIKucukUnluUyumuDuzlukItibariyleKontrolu}")
+        print(f"küçük ünlü uyumuna (yuvarlaklık no:1 itibariyle) uygun mu = {self.UIKucukUnluUyumuYuvarlaklikItibariyleKontrolu1}")
+        print(f"küçük ünlü uyumuna (yuvarlaklık no:2 itibariyle) uygun mu = {self.UIKucukUnluUyumuYuvarlaklikItibariyleKontrolu2}")
+        
+    def UyumIncelenimiSorgula(self, kelime):
         # uyum incelenim sorgula
         sesli= "a","e","ı","i","u","ü","o","ö"
         sayac = 0
-        for harf in kelimeu:
+        for harf in kelime:
             if harf in sesli:
                 sayac += 1
         if sayac >1:
@@ -35,7 +34,7 @@ class uyum_sorgula():
         else:
             return "H"
 
-    def buukk(kelime):
+    def BuyukUnluUyumuKalinlikItibariyleKontrolu(self, kelime):
         # buyuk unlu uyumu kanlik kontrolu
         sesliler = s = "a", "ı", "u", "o", "e", "i", "ü", "ö"
         kalin_unluler = ku = "a", "ı", "u", "o"
@@ -63,7 +62,7 @@ class uyum_sorgula():
         elif len(ks) <= 1:
             return "n"
 
-    def buuik(kelime):
+    def BuyukUnluUyumuIncelikItibariyleKontrolu(self, kelime):
         # buyuk unlu uyumu incelik kontrolu
         sesliler = s = "a", "ı", "u", "o", "e", "i", "ü", "ö"
         kalin_unluler = ku = "a", "ı", "u", "o"
@@ -91,7 +90,7 @@ class uyum_sorgula():
         elif len(ks) <= 1:
             return "n"
 
-    def buuk(kelime):
+    def BuyukUnluUyumuKontrolu(self, kelime):
         # buyuk unlu uyumu kontrolu
         sesliler = s = "a", "ı", "u", "o", "e", "i", "ü", "ö"
         kalin_unluler = ku = "a", "ı", "u", "o"
@@ -125,12 +124,12 @@ class uyum_sorgula():
         elif len(ks) <= 1:
             return "n"
 
-    def kuudk(kelime):
+    def KucukUnluUyumuDuzlukItibariyleKontrolu(self, kelime):
         # kucuk unlu uyumu -duzden- kontrolu
         sesliler = s = "a", "ı", "u", "o", "e", "i", "ü", "ö"
         duz = "a", "e", "ı", "i"
 
-        kelimeninsesliler = ks = []
+        kelimenin_sesliler = ks = []
         duzlu = []
         diger = []
 
@@ -155,16 +154,16 @@ class uyum_sorgula():
         elif len(ks) <= 1:
             return "n"
 
-    def kuuy1k(kelime):
+    def KucukUnluUyumuYuvarlaklikItibariyleKontrolu1(self, kelime):
         # kucuk unlu uyumu -yuvarlakdan 1- kontrolu
         sesliler = s = "a", "ı", "u", "o", "e", "i", "ü", "ö"
-        duz_unluler          = "a", "e", "ı", "i"
-        yuvarlak_unluler     = "o", "ö", "u", "ü"
+        duz_unluler = "a", "e", "ı", "i"
+        yuvarlak_unluler = "o", "ö", "u", "ü"
         dar_yuvarlak_unluler = "u", "ü"
 
-        kelimeninsesliler  = ks  = []
-        ilk_sesli          = ils = []
-        ikinci_sesli       = iks = []
+        kelimenin_sesliler = ks = []
+        ilk_sesli = ils = []
+        ikinci_sesli = iks = []
 
         for harf in kelime:
             if harf in s:
@@ -185,16 +184,16 @@ class uyum_sorgula():
         elif len(ks) == 1:
             return "n"
 
-    def kuuy2k(kelime):
+    def KucukUnluUyumuYuvarlaklikItibariyleKontrolu2(self, kelime):
         # kucuk unlu uyumu -yuvarlakdan 2- kontrolu
         sesliler = s = "a", "ı", "u", "o", "e", "i", "ü", "ö"
-        duz_unluler          = "a", "e", "ı", "i"
-        yuvarlak_unluler     = "o", "ö", "u", "ü"
-        duz_genis_unluler    = "a", "e"
+        duz_unluler = "a", "e", "ı", "i"
+        yuvarlak_unluler = "o", "ö", "u", "ü"
+        duz_genis_unluler = "a", "e"
 
-        kelimeninsesliler  = ks  = []
-        ilk_sesli          = ils = []
-        ikinci_sesli       = iks = []
+        kelimenin_sesliler = ks = []
+        ilk_sesli = ils = []
+        ikinci_sesli = iks = []
 
         for harf in kelime:
             if harf in s:
@@ -215,4 +214,4 @@ class uyum_sorgula():
         elif len(ks) == 1:
             return "n"
 
-ornek = uyum_sorgula("hakkı")
+ornek = UnluUyumuSorgula("hakkı")
